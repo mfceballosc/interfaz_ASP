@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="cct">
+    <file>unal.jpg</file>
+  </qresource>
+</RCC>
