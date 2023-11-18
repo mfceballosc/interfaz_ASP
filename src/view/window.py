@@ -5,7 +5,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 
 from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget
 
-from PySide6 import QtCore
+
 
 
 import numpy as np
