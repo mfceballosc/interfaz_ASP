@@ -21,7 +21,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.label.setPixmap(QtGui.QPixmap(img))
 
         # pantalla de inicio
-        lambda: self.menu.setCurrentIndex(0)
+        self.menu.setCurrentIndex(0)
 
         # # grafica 
         self.graficaTempl = Canvas_grafica()
