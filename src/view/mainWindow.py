@@ -60,6 +60,7 @@ class Ui_MainWindow(object):
         self.t2 = QtWidgets.QWidget()
         self.t2.setObjectName("t2")
         self.frame_2 = QtWidgets.QFrame(self.t2)
+        self.frame_2.setEnabled(True)
         self.frame_2.setGeometry(QtCore.QRect(20, 20, 741, 331))
         self.frame_2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 20px;\n"
@@ -71,6 +72,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.frame_2)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.label_2 = QtWidgets.QLabel(self.frame_2)
+        self.label_2.setEnabled(True)
         self.label_2.setStyleSheet("QFrame{\n"
 "border: none;\n"
 "}")
@@ -91,26 +93,29 @@ class Ui_MainWindow(object):
         self.frame_3.setObjectName("frame_3")
         self.gridLayout = QtWidgets.QGridLayout(self.frame_3)
         self.gridLayout.setObjectName("gridLayout")
-        self.b_graficar = QtWidgets.QPushButton(self.frame_3)
-        self.b_graficar.setObjectName("b_graficar")
-        self.gridLayout.addWidget(self.b_graficar, 0, 0, 1, 1)
         self.ResultadoAnalisis = QtWidgets.QTextEdit(self.frame_3)
         self.ResultadoAnalisis.setStyleSheet("QFrame{\n"
 "border-radius: 0px;\n"
 "}")
         self.ResultadoAnalisis.setReadOnly(True)
         self.ResultadoAnalisis.setObjectName("ResultadoAnalisis")
-        self.gridLayout.addWidget(self.ResultadoAnalisis, 0, 1, 2, 1)
+        self.gridLayout.addWidget(self.ResultadoAnalisis, 0, 1, 3, 1)
         self.cargarArchivo = QtWidgets.QPushButton(self.frame_3)
         self.cargarArchivo.setObjectName("cargarArchivo")
-        self.gridLayout.addWidget(self.cargarArchivo, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.cargarArchivo, 2, 0, 1, 1)
+        self.b_graficar = QtWidgets.QPushButton(self.frame_3)
+        self.b_graficar.setObjectName("b_graficar")
+        self.gridLayout.addWidget(self.b_graficar, 0, 0, 1, 1)
+        self.b_comtrade = QtWidgets.QPushButton(self.frame_3)
+        self.b_comtrade.setObjectName("b_comtrade")
+        self.gridLayout.addWidget(self.b_comtrade, 1, 0, 1, 1)
         self.menu.addTab(self.t2, "")
         self.verticalLayout_3.addWidget(self.menu)
         self.verticalLayout.addWidget(self.frame)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.menu.setCurrentIndex(0)
+        self.menu.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -119,12 +124,13 @@ class Ui_MainWindow(object):
         self.Iniciar.setText(_translate("MainWindow", "Iniciar"))
         self.menu.setTabText(self.menu.indexOf(self.t1), _translate("MainWindow", "main"))
         self.label_2.setText(_translate("MainWindow", "señales"))
-        self.b_graficar.setText(_translate("MainWindow", "graficar"))
         self.ResultadoAnalisis.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">sdsdsdsd</p></body></html>"))
         self.cargarArchivo.setText(_translate("MainWindow", "cargar archivo"))
+        self.b_graficar.setText(_translate("MainWindow", "graficar"))
+        self.b_comtrade.setText(_translate("MainWindow", "comtrade"))
         self.menu.setTabText(self.menu.indexOf(self.t2), _translate("MainWindow", "analisis"))
-
+# import logo_rc
