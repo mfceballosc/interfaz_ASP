@@ -20,5 +20,6 @@ def fault_diagnosis(fault_case_folder):
 
 
 if __name__ == "__main__":
-    message = fault_diagnosis(fault_case_folder=r"..\case1")
-    print(message[0])
+    message = str(fault_diagnosis(fault_case_folder=r"C:\python\ASP\case1")[0])
+
+    print(message)

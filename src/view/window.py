@@ -6,7 +6,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget
 
 
-
+from Diagnostic import fault_diagnosis
 
 import numpy as np
 import os
@@ -32,8 +32,15 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.b_comtrade.clicked.connect(self.graficarComtrade)
         self.Iniciar.clicked.connect(lambda: self.menu.setCurrentIndex(1))
 
+    def clearWidget(self):
+        self.grafica.removeWidget(self.graficaTempl.getInstance())
+        self.graficaTempl.getInstance().deleteLater() 
+
+
 
     def graficarSenal(self):
+        self.clearWidget()
+        self.graficaTempl = Canvas_grafica()
         if not self.df.empty:
             self.graficaTempl.plot(self.df)
             self.grafica.addWidget(self.graficaTempl.getInstance())
@@ -41,9 +48,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             print("Intentaa graficar un archivo vacio")
 
     def graficarComtrade(self):
+        self.clearWidget()
+        self.graficaTempl = Canvas_grafica()
         if not self.df_comtrade.empty:
             cols = self.df_comtrade.columns.tolist()
-            self.graficaTempl.plotComtrade(self.df_comtrade[cols[:2]])
+            self.graficaTempl.plotComtrade(self.df_comtrade[cols[:3]])
             self.grafica.addWidget(self.graficaTempl.getInstance())
         else: 
             print("Intentaa graficar un archivo vacio")
@@ -51,6 +60,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def abrirArchivo(self):
         file_path, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccionar archivo", "", "Archivos de texto (*.csv);;Todos los archivos (*)")
         file_path_comtrade = file_path.replace('.csv', '.cfg')
+        ruta = os.path.split(file_path)[0]
         try:
             self.df = pd.read_csv(file_path)
             self.rec = comtrade.load(file_path_comtrade)
@@ -58,7 +68,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         except:
             print("No selecciono un archivo")
 
-        self.ResultadoAnalisis.setText("Hola mundo")
+        # ruta = r"C:\python\ASP\case1"
+        texto = str(fault_diagnosis(ruta)[0])
+        self.ResultadoAnalisis.setText(texto)
 
 
 
@@ -70,6 +82,11 @@ class Canvas_grafica(FigureCanvas):
 
     def getInstance(self):
         return self
+
+    def clear(self):
+        self.ax.cla()
+        self.fig.canvas.draw()
+        plt.close(self.fig)
 
 
     def plot(self, df):
